@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.xp.springboot</groupId>
+	<artifactId>mop</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.6.RELEASE</version>
+	</parent>
+
+	<properties>
+		<lombok.version>1.16.18</lombok.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.spring>3.2.9.RELEASE</version.spring>
+		<version.jackson>2.8.0</version.jackson>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<!--Spring Boot -->
+		<!--支持 Web 应用开发，包含 Tomcat 和 spring-mvc。 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!--模板引擎 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!--支持使用 JDBC 访问数据库 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<!--添加适用于生产环境的功能，如性能指标和监测等功能。 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<!-- springboot 单元测试 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!--Mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!-- json依赖 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.1.43</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${version.jackson}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${version.jackson}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${version.jackson}</version>
+		</dependency>
+		<!-- yooli start -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.yooli.common</groupId> -->
+		<!-- <artifactId>yooli-common-utils</artifactId> -->
+		<!-- <version>1.0.0-SNAPSHOT</version> -->
+		<!-- </dependency> -->
+		<!-- yooli end -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.6</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<!-- logback start -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<!-- logback end -->
+
+		<!-- log start -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.slf4j</groupId> -->
+		<!-- <artifactId>slf4j-log4j12</artifactId> -->
+		<!-- <version>1.7.2</version> -->
+		<!-- </dependency> -->
+		<!-- log end -->
+
+		<!-- 7niu -->
+		<dependency>
+			<groupId>qiniu-java-sdk</groupId>
+			<artifactId>qiniu-java-sdk</artifactId>
+			<version>0.9.1-SNAPSHOT</version>
+		</dependency>
+		<!-- mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+		<!-- lombok 依赖 start -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- lombok 依赖 end -->
+	</dependencies>
+
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>config/**</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<appendAssemblyId>true</appendAssemblyId>
+					<descriptors>
+						<descriptor>src/assembly/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>spring-milestone</id>
+			<url>https://repo.spring.io/libs-release</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestone</id>
+			<url>https://repo.spring.io/libs-release</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<profiles>
+		<profile>
+			<id>local</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>${profiles.dir}/local</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+
+		<profile>
+			<id>dev</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>${profiles.dir}/dev</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+
+		<profile>
+			<id>beta</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>${profiles.dir}/beta</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>betaB</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>${profiles.dir}/betaB</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>${profiles.dir}/prod</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

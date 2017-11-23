@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xp.springboot.mop.mapper.upload.UploadPictureRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.xp.springboot.mop.domain.upload.UploadPictureRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pic_name" property="picName" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="apartment_layout" property="apartmentLayout" jdbcType="SMALLINT" />
+    <result column="style" property="style" jdbcType="SMALLINT" />
+    <result column="area" property="area" jdbcType="SMALLINT" />
+    <result column="label" property="label" jdbcType="SMALLINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="upload_user" property="uploadUser" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="group_id" property="groupId" jdbcType="SMALLINT" />
+    <result column="space" property="space" jdbcType="SMALLINT" />
+    <result column="part" property="part" jdbcType="SMALLINT" />
+    <result column="source" property="source" jdbcType="SMALLINT" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+     <result column="top_status" property="topStatus" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+  </sql>
+  <sql id="Base_Column_List" >
+    id, pic_name, title, apartment_layout, style, area, label, create_time, update_time, 
+    upload_user, user_id, group_id, space, part, source, description, location,image_path,top_status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xp.springboot.mop.domain.upload.UploadPictureRecord" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from upload_picture_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from upload_picture_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from upload_picture_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xp.springboot.mop.domain.upload.UploadPictureRecord" >
+    delete from upload_picture_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xp.springboot.mop.domain.upload.UploadPictureRecord" >
+    insert into upload_picture_record (id, pic_name, title, 
+      apartment_layout, style, area, 
+      label, create_time, update_time, 
+      upload_user, user_id, group_id, 
+      space, part, source, 
+      description, location,image_path,top_status)
+    values (#{id,jdbcType=INTEGER}, #{picName,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{apartmentLayout,jdbcType=SMALLINT}, #{style,jdbcType=SMALLINT}, #{area,jdbcType=SMALLINT}, 
+      #{label,jdbcType=SMALLINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{uploadUser,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, #{groupId,jdbcType=SMALLINT}, 
+      #{space,jdbcType=SMALLINT}, #{part,jdbcType=SMALLINT}, #{source,jdbcType=SMALLINT}, 
+      #{description,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}, #{topStatus,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xp.springboot.mop.domain.upload.UploadPictureRecord" >
+    insert into upload_picture_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="picName != null" >
+        pic_name,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="apartmentLayout != null" >
+        apartment_layout,
+      </if>
+      <if test="style != null" >
+        style,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="label != null" >
+        label,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="uploadUser != null" >
+        upload_user,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="space != null" >
+        space,
+      </if>
+      <if test="part != null" >
+        part,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="picName != null" >
+        #{picName,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="apartmentLayout != null" >
+        #{apartmentLayout,jdbcType=SMALLINT},
+      </if>
+      <if test="style != null" >
+        #{style,jdbcType=SMALLINT},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=SMALLINT},
+      </if>
+      <if test="label != null" >
+        #{label,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadUser != null" >
+        #{uploadUser,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=SMALLINT},
+      </if>
+      <if test="space != null" >
+        #{space,jdbcType=SMALLINT},
+      </if>
+      <if test="part != null" >
+        #{part,jdbcType=SMALLINT},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=SMALLINT},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xp.springboot.mop.domain.upload.UploadPictureRecord" resultType="java.lang.Integer" >
+    select count(*) from upload_picture_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update upload_picture_record
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.picName != null" >
+        pic_name = #{record.picName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apartmentLayout != null" >
+        apartment_layout = #{record.apartmentLayout,jdbcType=SMALLINT},
+      </if>
+      <if test="record.style != null" >
+        style = #{record.style,jdbcType=SMALLINT},
+      </if>
+      <if test="record.area != null" >
+        area = #{record.area,jdbcType=SMALLINT},
+      </if>
+      <if test="record.label != null" >
+        label = #{record.label,jdbcType=SMALLINT},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.uploadUser != null" >
+        upload_user = #{record.uploadUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.groupId != null" >
+        group_id = #{record.groupId,jdbcType=SMALLINT},
+      </if>
+      <if test="record.space != null" >
+        space = #{record.space,jdbcType=SMALLINT},
+      </if>
+      <if test="record.part != null" >
+        part = #{record.part,jdbcType=SMALLINT},
+      </if>
+      <if test="record.source != null" >
+        source = #{record.source,jdbcType=SMALLINT},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.location != null" >
+        location = #{record.location,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imagePath != null" >
+        image_path = #{record.imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.topStatus != null" >
+        top_status = #{record.topStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update upload_picture_record
+    set id = #{record.id,jdbcType=INTEGER},
+      pic_name = #{record.picName,jdbcType=VARCHAR},
+      title = #{record.title,jdbcType=VARCHAR},
+      apartment_layout = #{record.apartmentLayout,jdbcType=SMALLINT},
+      style = #{record.style,jdbcType=SMALLINT},
+      area = #{record.area,jdbcType=SMALLINT},
+      label = #{record.label,jdbcType=SMALLINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      upload_user = #{record.uploadUser,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      group_id = #{record.groupId,jdbcType=SMALLINT},
+      space = #{record.space,jdbcType=SMALLINT},
+      part = #{record.part,jdbcType=SMALLINT},
+      source = #{record.source,jdbcType=SMALLINT},
+      description = #{record.description,jdbcType=VARCHAR},
+      location = #{record.location,jdbcType=VARCHAR},
+      image_path = #{record.imagePath,jdbcType=VARCHAR},
+      top_status = #{topStatus,jdbcType=SMALLINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xp.springboot.mop.domain.upload.UploadPictureRecord" >
+    update upload_picture_record
+    <set >
+      <if test="picName != null" >
+        pic_name = #{picName,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="apartmentLayout != null" >
+        apartment_layout = #{apartmentLayout,jdbcType=SMALLINT},
+      </if>
+      <if test="style != null" >
+        style = #{style,jdbcType=SMALLINT},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=SMALLINT},
+      </if>
+      <if test="label != null" >
+        label = #{label,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadUser != null" >
+        upload_user = #{uploadUser,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=SMALLINT},
+      </if>
+      <if test="space != null" >
+        space = #{space,jdbcType=SMALLINT},
+      </if>
+      <if test="part != null" >
+        part = #{part,jdbcType=SMALLINT},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=SMALLINT},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xp.springboot.mop.domain.upload.UploadPictureRecord" >
+    update upload_picture_record
+    set pic_name = #{picName,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      apartment_layout = #{apartmentLayout,jdbcType=SMALLINT},
+      style = #{style,jdbcType=SMALLINT},
+      area = #{area,jdbcType=SMALLINT},
+      label = #{label,jdbcType=SMALLINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      upload_user = #{uploadUser,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      group_id = #{groupId,jdbcType=SMALLINT},
+      space = #{space,jdbcType=SMALLINT},
+      part = #{part,jdbcType=SMALLINT},
+      source = #{source,jdbcType=SMALLINT},
+      description = #{description,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      top_status = #{topStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <insert id="batchSavePicture" parameterType="com.xp.springboot.mop.domain.upload.UploadPictureRecord" >
+       insert into upload_picture_record (id, pic_name, title, 
+      apartment_layout, style, area, 
+      label, create_time, 
+      upload_user, user_id, group_id, 
+      space, part, source, 
+      description, location,image_path,top_status)
+    values
+    <foreach collection="recordList" item="item" index="index" separator="," > 
+        (#{item.id}, #{item.picName}, #{item.title}, 
+      #{item.apartmentLayout}, #{item.style}, #{item.area}, 
+      #{item.label}, #{item.createTime}, 
+      #{item.uploadUser}, #{item.userId}, #{item.groupId}, 
+      #{item.space}, #{item.part}, #{item.source}, 
+      #{item.description}, #{item.location}, #{item.imagePath}, #{item.topStatus})
+    </foreach>
+  </insert>
+</mapper>

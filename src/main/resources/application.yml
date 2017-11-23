@@ -1,0 +1,50 @@
+spring:
+  jmx:
+    enabled: true
+  mvc:
+    servlet:
+      load-on-startup: 1
+  datasource :
+    druid :
+      url: ${jdbc.url}
+      username: ${jdbc.username}
+      password: ${jdbc.password}
+      driver-class-name: com.mysql.jdbc.Driver
+      initial-size : ${jdbc.initialSize}
+      max-active : ${jdbc.minIdle}
+      min-idle : ${jdbc.minIdle}
+      max-wait : 60000
+      pool-prepared-statements : true
+      max-open-prepared-statements: 20
+      validation-query: SELECT 'x'
+      validation-query-timeout: 30000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 60000
+      keep-alive: true
+  sleuth:
+    sampler:
+      percentage: 1.0
+#info
+info:
+  app:
+    name: ${spring.application.name}
+    instance: ${eureka.instance.instance-id}
+#eureka
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    prefer-ip-address: true
+  client:
+    healthcheck:
+      enabled: true
+##https://github.com/javamelody/javamelody/wiki/SpringBootStarter
+javamelody:
+  advisor-auto-proxy-creator-enabled: false
+  init-parameters:
+    authorized-users: mlhc:mljr123456
+    storage-directory: logs/javamelody
+    warning-threshold-millis: 200
+    severe-threshold-millis: 500
