@@ -7,16 +7,7 @@ import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 import com.xp.springboot.mop.util.trade.IdGenerator;
 
-/**
- * 
- * ClassName:UploadImg <br/>
- * Function: TODO ADD FUNCTION. <br/>
- * Date: 2017年2月22日 下午8:49:00 <br/>
- * 
- * @author tongzheng.zhang
- * @version 1.0
- * @since JDK 1.8
- */
+
 public final class UploadImg {
 	
 	static String ACCESS_KEY = "RBQvyPwEiJhEx5UAg_T1fRu8nLyu4aZawJTpXcg0";
@@ -37,16 +28,7 @@ public final class UploadImg {
 		return auth.uploadToken(bucketname, key);
 	}
 
-	/**
-	 * 
-	 * upload. <br/>
-	 *
-	 * @author tongzheng.zhang
-	 * @param path
-	 * @param key
-	 * @return
-	 * @since JDK 1.6
-	 */
+
 	public static String upload(String path, String key) {
 		try {
 			uploadManager.put(path, key, getUpToken(key));
@@ -56,15 +38,7 @@ public final class UploadImg {
 		}
 	}
 	
-	/**
-	 * 
-	 * upload: overload method. <br/>
-	 *
-	 * @author tongzheng.zhang
-	 * @param path
-	 * @return
-	 * @since JDK 1.6
-	 */
+
 	public static String upload(String path) {
 		try {
 			String key = String.valueOf(IdGenerator.generateNumberId());
