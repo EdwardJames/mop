@@ -1,15 +1,16 @@
  CREATE TABLE `user` (
-  `id` bigint(20) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `user_name` varchar(45) DEFAULT NULL,
-  `mobile` varchar(45) DEFAULT NULL,
-  `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL COMMENT '主键ID',
+  `name` varchar(10) DEFAULT NULL COMMENT '名称',
+  `age` int(3) DEFAULT NULL COMMENT '年龄',
+  `password` varchar(20) DEFAULT NULL COMMENT '密码',
+  `user_name` varchar(10) DEFAULT NULL COMMENT '真实姓名',
+  `mobile` varchar(15) DEFAULT NULL COMMENT '手机号',
+  `user_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户Id',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`),
   KEY `index_num_age` (`num`,`age`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
 
 
 

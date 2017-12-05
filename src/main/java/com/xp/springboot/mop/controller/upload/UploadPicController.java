@@ -106,7 +106,7 @@ public class UploadPicController {
         List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
         MultipartFile file = null;
         BufferedOutputStream stream = null;
-        for (int i = 0; i < files.size(); ++i) {
+        for (int i = 0; i < files.size(); i++) {
             file = files.get(i);
             if (!file.isEmpty()) {
                 try {
