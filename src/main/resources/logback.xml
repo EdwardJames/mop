@@ -70,7 +70,7 @@
     <logger name="java.sql" level="ERROR" />
     <logger name="org.springframework" level="ERROR" />
     <logger name="org.mybatis" level="ERROR" />
-
+    <logger name="com.xp.springboot.mop.config.monitor.MonitorInterceptor" level="DEBUG"/>
     <!--  -->
     <root level="DEBUG">
         <appender-ref ref="info" />

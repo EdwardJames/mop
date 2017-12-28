@@ -2,6 +2,8 @@ package com.xp.springboot.mop;
 
 
 
+import java.io.File;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +14,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.http.HttpStatus;
 
 import com.xp.springboot.mop.util.trade.IdGenerator;
@@ -20,6 +23,7 @@ import com.xp.springboot.mop.util.trade.IdGenerator;
 @EnableDiscoveryClient
 @EnableFeignClients
 @ComponentScan
+@ImportResource("classpath:spring-config.xml")
 public class Application {
     
     @Bean
@@ -34,6 +38,7 @@ public class Application {
     } 
     public static void main(String[] args){
         System.out.println("交易订单号为:"+IdGenerator.generate());
+        
         SpringApplication.run(Application.class, args);
     }
 }

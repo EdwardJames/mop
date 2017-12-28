@@ -1,10 +1,12 @@
 package com.xp.springboot.mop.controller.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.xp.springboot.mop.facade.UserRegisterFacade;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,11 +22,14 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/mop/app/userRegister")
 public class UserRegisterController {
+    @Autowired 
+    private UserRegisterFacade userRegisterFacade;
     @RequestMapping("/getUserCount")
     public Model getUserCount(Model model) {
         log.info("getUserCount start");
         Integer num = 0;
         num = 1;
+        num = userRegisterFacade.getUserCount();
         log.info("getUserCount 查询出数据结果为:{}", num);
         model.addAttribute("", 0);
         return model;

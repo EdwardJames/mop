@@ -1,5 +1,7 @@
 package com.xp.springboot.mop.controller.web;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Controller;
@@ -25,12 +27,14 @@ public class ShowpicController {
     private DiscoveryClient client;
 
     @RequestMapping("/list/picture")
-    public Integer listPicture(Model model) {
+    public Integer listPicture(Model model) throws Exception {
         log.info("picture start-host:{}", client.getLocalServiceInstance().getHost());
         Integer num = 0;
         num = 1;
         log.info("picture 查询出数据结果为:{}", num);
+    
         model.addAttribute("", 0);
+        log.error("测试异常11111111111111111111111111111");
         return num;
     }
 

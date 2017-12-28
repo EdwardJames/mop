@@ -4,7 +4,7 @@ package com.xp.springboot.mop.common;
 /**
  * @author iwang
  */
-public enum ResultCode{
+public enum ResultCode implements Resultable {
     /**
      * 成功通用码
      */

@@ -1,12 +1,13 @@
 package com.xp.springboot.mop.common;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.xp.springboot.mop.exception.BusinessException;
 
 /**
  * RPC调用的结果封装
@@ -146,7 +147,17 @@ public final class Result<T> implements Serializable {
         return new Result<>(map);
     }
 
-
+    /**
+     * @param e 枚举
+     * @return
+     * @Description 用枚举构造失败
+     * @author diandian.zhang
+     * @date 2017年8月19日上午11:51:34
+     * @since JDK1.8
+     */
+    public static <T> Result<T> fail(BusinessException e) {
+        return new Result<>(e.getCode(), e.getMsg());
+    }
 
     /**
      * 返回失败结果
