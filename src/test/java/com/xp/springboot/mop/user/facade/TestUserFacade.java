@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.xp.springboot.mop.common.Result;
 import com.xp.springboot.mop.facade.UserRegisterFacade;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -14,7 +15,7 @@ public class TestUserFacade {
     @Autowired UserRegisterFacade userRegisterFacade;
     @Test
     public void testGetUserCount(){
-        Integer userCount = userRegisterFacade.getUserCount();
+        Result<Integer> userCount = userRegisterFacade.getUserCount();
         System.out.println(userCount);
     }
 }

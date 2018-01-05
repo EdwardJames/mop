@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.xp.springboot.mop.common.Result;
 import com.xp.springboot.mop.facade.UserRegisterFacade;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +30,8 @@ public class UserRegisterController {
         log.info("getUserCount start");
         Integer num = 0;
         num = 1;
-        num = userRegisterFacade.getUserCount();
-        log.info("getUserCount 查询出数据结果为:{}", num);
+        Result<Integer> result = userRegisterFacade.getUserCount();
+        log.info("getUserCount 查询出数据结果为:{}", result.getData());
         model.addAttribute("", 0);
         return model;
     }

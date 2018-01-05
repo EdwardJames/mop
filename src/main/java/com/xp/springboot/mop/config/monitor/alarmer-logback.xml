@@ -7,32 +7,52 @@ initialization performed by Boot
 
 <included>
 
-    <springProfile name="prod">
-        <property name="smtpHost" value="smtp.exmail.qq.com"/>
-        <property name="smtpPort" value="465"/>
-        <property name="username" value="peng.xu@mljr.com"/>
-        <property name="password" value="123123qwe"/>
-        <property name="SSL" value="true"/>
-        <property name="email_from" value="peng.xu@mljr.com"/>
-        <property name="email_to" value="peng.xu@mljr.com"/>
-        <appender name="SMTPAppender" class="ch.qos.logback.classic.net.SMTPAppender">
-            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
-                <marker>ALARM</marker>
-            </evaluator>
-            <smtpHost>${smtpHost}</smtpHost>
-            <smtpPort>${smtpPort}</smtpPort>
-            <username>${username}</username>
-            <password>${password}</password>
-            <SSL>${SSL}</SSL>
-            <to>${email_to}</to>
-            <from>${email_from}</from>
-            <subject>${email_subject}</subject>
-            <layout class="ch.qos.logback.classic.html.HTMLLayout">
-                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}%X{X-B3-TraceId}%X{X-B3-SpanId}%msg</pattern>
-            </layout>
-        </appender>
-        <logger name="Alarmer" level="INFO" additivity="true">
-            <appender-ref ref="SMTPAppender"/>
-        </logger>
-    </springProfile>
+  <!-- starat -->
+     <!--  邮件 -->
+    <!-- SMTP server的地址，必需指定。如网易的SMTP服务器地址是： smtp.163.com -->
+    <property name="smtpHost" value="smtp.exmail.qq.com"/><!--填入要发送邮件的smtp服务器地址(问DBA或者经理啥的就知道)-->
+    <!-- SMTP server的端口地址。默认值：25 -->
+    <property name="smtpPort" value="25"/>
+    <!-- 发送邮件账号，默认为null -->
+    <property name="username" value="350210261@qq.com"/><!--发件人账号-->
+    <!-- 发送邮件密码，默认为null -->
+    <property name="password" value="---没写密码-----"/><!--发件人密码-->
+    <!-- 如果设置为true，appender将会使用SSL连接到日志服务器。默认值：false -->
+    <property name="SSL" value="false"/>
+    <!-- 指定发送到那个邮箱，可设置多个<to>属性，指定多个目的邮箱 -->
+    <property name="email_to" value="350210261@qq.com"/><!--收件人账号多个可以逗号隔开-->
+    <!-- 指定发件人名称。如果设置成“&lt;ADMIN&gt; ”，则邮件发件人将会是“<ADMIN> ” -->
+    <property name="email_from" value="350210261@qq.com" />
+    <!-- 指定emial的标题，它需要满足PatternLayout中的格式要求。如果设置成“Log: %logger - %msg ”，就案例来讲，则发送邮件时，标题为“【Error】: com.foo.Bar - Hello World ”。 默认值："%logger{20} - %m". -->
+<!--     <property name="email_subject" value="【error】: %logger" /> -->
+    <!-- ERROR邮件发送 -->
+    <appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>${smtpHost}</smtpHost>
+        <smtpPort>${smtpPort}</smtpPort>
+        <username>${username}</username>
+        <password>${password}</password>
+        <asynchronousSending>true</asynchronousSending>
+        <SSL>${SSL}</SSL>
+        <to>${email_to}</to>
+        <from>${email_from}</from>
+        <subject>${email_subject}</subject>
+　　　　 <!-- html格式-->
+        <layout class="ch.qos.logback.classic.html.HTMLLayout">
+            <Pattern>%date%level%thread%logger{0}%line%message</Pattern>
+        </layout>
+　　　　 <!-- 这里采用等级过滤器 指定等级相符才发送 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
+            <!-- 每个电子邮件只发送一个日志条目 -->
+            <bufferSize>1</bufferSize>
+        </cyclicBufferTracker>
+    </appender>
+    <root level="info">
+        <appender-ref ref="EMAIL"/>
+    </root>
+ <!-- end -->
 </included>
