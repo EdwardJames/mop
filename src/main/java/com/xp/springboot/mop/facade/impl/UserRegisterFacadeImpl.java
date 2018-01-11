@@ -21,7 +21,7 @@ public class UserRegisterFacadeImpl implements UserRegisterFacade {
         log.error("邮件内容");
         log.error("test email-=---------------");
         Integer count = userRegisterService.getUserCount();
-        System.out.println(Integer.parseInt(""));
+//        System.out.println(Integer.parseInt(""));
         return result.setData(count == null ? 0 : count);
 
     }

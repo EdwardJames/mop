@@ -48,3 +48,5 @@ javamelody:
     storage-directory: logs/javamelody
     warning-threshold-millis: 200
     severe-threshold-millis: 500
+
+    

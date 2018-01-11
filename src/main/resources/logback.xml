@@ -73,7 +73,7 @@
         </rollingPolicy>  
     </appender>  
     
-    
+    <logger name="mapper" level="DEBUG"/>
     <logger name="monitor" additivity="false" level="INFO" />  
     <logger name="java.sql" level="ERROR" />
     <logger name="org.springframework" level="ERROR" />
@@ -84,8 +84,8 @@
         <appender-ref ref="info" />
         <appender-ref ref="error" />
         <appender-ref ref="console" />
-        <appender-ref ref="FILE" />
-        <appender-ref ref="monitor" />
+<!--         <appender-ref ref="FILE" /> -->
+<!--         <appender-ref ref="monitor" /> -->
     </root>
     
     
